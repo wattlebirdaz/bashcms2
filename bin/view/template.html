@@ -1,0 +1,50 @@
+Content-type: text/html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <title>$title$</title>
+    <link rel="stylesheet" href="/view/default.css" />
+    <script src="/view/main.js"></script>
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    <header id="page-header">
+      <hgroup>
+        <h1>Riki Otaki Blog</h1>
+        <h2>Under Construction</h2>
+      </hgroup>
+      <nav>
+        <ul>
+          <li><a href="/?page=top">Top</a></li>
+          <li><a href="/?post=sample">Sample</a></li>
+        </ul>
+      </nav>
+    </header>
+    <article id="article">
+      <header id="article-header">
+        <nav>
+          $nav$<br />created: $created_time$<br />views: $views$
+        </nav>
+      </header>
+    </article>
+    <article id="article_body">
+      $body$
+    </article>
+    <footer id="article_footer">
+      <nav>
+        created: $created_time$&nbsp;(last modified: $modified_time$)<br />
+        views:&nbsp;keywords: <span id="keywords">$Keywords$</span>
+      </nav>
+    </footer>
+    <aside id="widgets">
+      <aside id="full-search"></aside>
+      <aside id="last-articles"></aside>
+      <aside id="rank-articles"></aside>
+      <footer id="page-footer">
+        <p>Copyright: $Copyright$</p>
+      </footer>
+    </aside>
+  </body>
+</html>
