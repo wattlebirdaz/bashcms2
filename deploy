@@ -3,8 +3,13 @@ source "$(dirname $0)/bin/conf"
 
 [ "$USER" = "root" ] # USER MUST BE ROOT
 
-## INSTALL THIS SYSTEM
-rsync -av -delete "$(dirname $0)/bin/" "$appdir/"
+### CREATE DIRECTORIES
+mkdir -p "$logdir" "$datadir" "$datadir/counters"
+chown www-data:www-data "$logdir" "$datadir" "$datadir/counters"
+
+### INSTALL THIS SYSTEM
+chmod +x "$(dirname $0)/bin/"*
+rsync -av --delete "$(dirname $0)/bin/" "$appdir/"
 chown www-data:www-data "$appdir" -R
 
 ### RENAME FETCH CGI
