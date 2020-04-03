@@ -31,7 +31,7 @@ cat $tmp-git-change |
         mkdir -p "$datadir/$d" && git log -p "$contentsdir/$d/main.md" |
                 grep '^Date:' |
                 awk '{print $2,$3,$4,$5,$6}' |
-                date -f "+%Y-%m-%d %H:%M:%S" |
+                date -f - "+%Y-%m-%d %H:%M:%S" |
                 awk -v cf="$datadir/$d/created_time" \
                     -v mf="$datadir/$d/modified_time" \
                     'NR==1{print > mf}END{print > cf}'
@@ -43,7 +43,7 @@ cat $tmp-git-change |
             tee "$datadir/$d/title" |
             awk -v d="$d" '{gsub(/s\//,"=",d); print "<a href=\"/?" d "\">" $0 "</a>"}' > "$datadir/$d/link"
 
-        ymd=$(sed 's/ .*//' < "datadir/$d/created_time" )
+        ymd=$(sed 's/ .*//' < "$datadir/$d/created_time" )
         sed "s;</a>; ($ymd);" "$datadir/$d/link" > "$datadir/$d/link_date"
 
         touch "$datadir/$d/nav"
