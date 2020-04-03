@@ -1,0 +1,17 @@
+#!/bin/bash -xv
+
+source "$(dirname $0)/../bin/conf"
+url='https://rotaki.org'
+tmp=/tmp/$$
+
+awk '{print $3}' $datadir/{post,page}_list |
+    sed 's;s/;=;' |
+    sed "s;^;${url}?;" > $tmp-list
+
+
+time head -n 1000 $tmp-list |
+     xargs -P1 -n 1 curl 2> /dev/null |
+     grep '<title>' |
+     nl
+
+rm -f $tmp-*
