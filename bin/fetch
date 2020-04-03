@@ -19,9 +19,9 @@ git pull
         grep -Eo '(posts|pages)/[^/]+' > $tmp-git-change
 
 rm -f "$datadir/INIT"
-cat $tmp-git-change > /tmp/diff
+# cat $tmp-git-change > /tmp/diff
 
-### CREATE/DELETE ARTICLE DIRECTORY
+### create/DELETE ARTICLE DIRECTORY
 cat $tmp-git-change
 while read d ; do
     [ -f "$contentsdir/$d/main.md" ] || rm -Rf "$datadir/$d"
