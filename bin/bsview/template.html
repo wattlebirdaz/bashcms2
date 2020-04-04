@@ -15,7 +15,11 @@ Content-Type: text/html
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -49,30 +53,38 @@ Content-Type: text/html
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#"> Riki Otaki Blog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      $for(links)$
+      $if(links.sublinks)$
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="$links.href$" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">$links.text$</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          $for(links.sublinks)$
+          <a class="dropdown-item" href="$links.sublinks.href$">$links.sublinks.text$</a>
+          $endfor$
         </div>
       </li>
+      $else$
+      <li class="nav-item active">
+        <a class="nav-link" href="$links.href$">$links.text$</a >
+      </li>
+      $endif$
+      $endfor$
+      <!-- <li class="nav-item active"> -->
+      <!--   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+      <!-- </li> -->
+      <!-- <li class="nav-item"> -->
+      <!--   <a class="nav-link" href="#">Link</a> -->
+      <!-- </li> -->
+      <!-- <li class="nav-item"> -->
+      <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+      <!-- </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="full-search-box">
@@ -86,9 +98,9 @@ Content-Type: text/html
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1> Riki Otaki Blog!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      <h1> Riki Otaki Blog</h1>
+      <p> Content Management System written in bash </p>
+      <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
     </div>
   </div>
 
@@ -96,6 +108,19 @@ Content-Type: text/html
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-8" id="article-body">
+        <!-- hatena -->
+        $if(hatena)$
+        <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        $endif$
+        <!-- twitter -->
+        $if(twitter)$
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="$twitter" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        $endif$
+        <!-- pocket button -->
+        $if(pocket)$
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        $endif$
         $body$
         <div class="card" id="article-info">
           <h4 class="card-header">Article Info</h4 >
@@ -108,10 +133,17 @@ Content-Type: text/html
         </div>
       </div>
       <div class="col-md-4" id="widgets">
+        $if(sociallinks)$
+        <h1>Social Links</h1>
+        $endif$
+        $for(sociallinks)$
+        <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
+        $endfor$
         <aside id="last-articles"></aside>
         <br />
         <aside id="rank-articles"></aside>
       </div>
+      
     </div>
     <hr>
 
