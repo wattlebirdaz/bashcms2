@@ -7,9 +7,10 @@ trap 'rm -f $tmp-*' EXIT
 
 ### VARIABLES
 tmp=/tmp/$$
-dir="$(tr -dc "a-zA-Z0-9_=" <<< ${QUERY_STRING} | sed 's;=;s/;')"
+dir="$(tr -dc "a-zA-Z0-9_=" <<< ${QUERY_STRING} | sed 's/fbclid=.*//' | sed 's;=;s/;')"
 [ -z "$dir" ] && dir="pages/top"
-[ "$dir" = "post" ] && dir="$(tail -n 1 "$datadir/post_list" | cut -d' ' -f 3)"
+[ "$dir" = "post" ] && echo -e Location: "$(cat $datadir/last_post)\n" && exit 0
+# [ "$dir" = "post" ] && dir="$(tail -n 1 "$datadir/post_list" | cut -d' ' -f 3)"
 md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
@@ -25,6 +26,7 @@ title: '$(cat "$datadir/$dir/title")'
 nav: '$(cat "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 $(cat "$contentsdir/config.yaml" )
+page: $(sed -e 's;^;/?;' -e 's;s/;=;' <<< $dir)
 ---
 FIN
 

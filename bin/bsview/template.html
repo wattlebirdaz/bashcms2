@@ -9,7 +9,7 @@ Content-Type: text/html
     <!-- <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"> -->
     <!-- <meta name="generator" content="Jekyll v3.8.6"> -->
     
-    <title>$title$</title>
+    <title>$title$ | $sitetitle$</title>
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/jumbotron/"> -->
 
@@ -22,143 +22,153 @@ Content-Type: text/html
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
-<meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
-<meta name="theme-color" content="#563d7c">
+    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
 
 
     <style>
       .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
       }
 
       @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+          .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+          }
       }
     </style>
     <!-- Custom styles for this template -->
     <link href="/bsview/jumbotron.css" rel="stylesheet">
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#"> Riki Otaki Blog</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <a class="navbar-brand" href="$protocol$//$host$"> $sitetitle$</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      $for(links)$
-      $if(links.sublinks)$
-      <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="$links.href$" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">$links.text$</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          $for(links.sublinks)$
-          <a class="dropdown-item" href="$links.sublinks.href$">$links.sublinks.text$</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          $for(links)$
+          $if(links.sublinks)$
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="$links.href$" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">$links.text$</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              $for(links.sublinks)$
+              <a class="dropdown-item" href="$links.sublinks.href$">$links.sublinks.text$</a>
+              $endfor$
+            </div>
+          </li>
+          $else$
+          <li class="nav-item active">
+            <a class="nav-link" href="$links.href$">$links.text$</a >
+          </li>
+          $endif$
           $endfor$
-        </div>
-      </li>
-      $else$
-      <li class="nav-item active">
-        <a class="nav-link" href="$links.href$">$links.text$</a >
-      </li>
-      $endif$
-      $endfor$
-      <!-- <li class="nav-item active"> -->
-      <!--   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-      <!-- </li> -->
-      <!-- <li class="nav-item"> -->
-      <!--   <a class="nav-link" href="#">Link</a> -->
-      <!-- </li> -->
-      <!-- <li class="nav-item"> -->
-      <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-      <!-- </li> -->
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="full-search-box">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="fullSearch()">Search</button>
-    </form>
-  </div>
-</nav>
+          <!-- <li class="nav-item active"> -->
+            <!--   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+            <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <!--   <a class="nav-link" href="#">Link</a> -->
+            <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+            <!-- </li> -->
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="full-search-box">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="fullSearch()">Search</button>
+        </form>
+      </div>
+    </nav>
 
-<main role="main">
+    <main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1> Riki Otaki Blog</h1>
-      <p> Content Management System written in bash </p>
-      <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-      <div class="col-md-8" id="article-body">
-        <!-- hatena -->
-        $if(hatena)$
-        <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-        $endif$
-        <!-- twitter -->
-        $if(twitter)$
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="$twitter" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        $endif$
-        <!-- pocket button -->
-        $if(pocket)$
-        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
-        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-        $endif$
-        $body$
-        <div class="card" id="article-info">
-          <h4 class="card-header">Article Info</h4 >
-          <p style="padding:5px">created: $created_time$ <br/>
-            modified: $modified$ <br/>
-            views: $views$<br/>
-            keywords: <span id="keywords">$Keywords$</span><br />
-            $nav$
-          </p>
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1> $sitetitle$</h1>
+          <p> $sitesubtitle$ </p>
+          <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
         </div>
       </div>
-      <div class="col-md-4" id="widgets">
-        $if(sociallinks)$
-        <h1>Social Links</h1>
-        $endif$
-        $for(sociallinks)$
-        <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
-        $endfor$
-        <aside id="last-articles"></aside>
-        <br />
-        <aside id="rank-articles"></aside>
-      </div>
-      
-    </div>
-    <hr>
 
-  </div> <!-- /container -->
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-8" id="article-body">
+            <!-- hatena -->
+            $if(hatena)$
+            <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+            $endif$
+            <!-- twitter -->
+            $if(twitter)$
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="$twitter$" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            $endif$
+            <!-- line -->
+            $if(line)$
+            <div class="line-it-button" style="display: none;" data-lang="en" data-type="like" data-url="$protocol$//$host$$page$" data-share="true"></div>
+            <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+            $endif$
+            $if(facebook)$
+            <div class="fb-like" data-href="$protocol$//$host$$page$" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+            $endif$
+            <!-- pocket button -->
+            $if(pocket)$
+            <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+            <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+            $endif$
+            $body$
+            <div class="card" id="article-info">
+              <h4 class="card-header">Article Info</h4 >
+              <p style="padding:5px">created: $created_time$ <br/>
+                modified: $modified$ <br/>
+                views: $views$<br/>
+                keywords: <span id="keywords">$Keywords$</span><br />
+                $nav$
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" id="widgets">
+            $if(sociallinks)$
+            <h1>Social Links</h1>
+            $endif$
+            $for(sociallinks)$
+            <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
+            $endfor$
+            <aside id="last-articles"></aside>
+            <br />
+            <aside id="rank-articles"></aside>
+          </div>
+          
+        </div>
+        <hr>
 
-</main>
+      </div> <!-- /container -->
 
-<footer class="container">
-  <p>$Copyright$</p>
-</footer>
+    </main>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <footer class="container">
+      <p>$Copyright$</p>
+    </footer>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-<script src="/bsview/main.js"></script>
-<!-- <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script> --></body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="/bsview/main.js"></script>
+    <!-- <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script> --></body>
 </html>
